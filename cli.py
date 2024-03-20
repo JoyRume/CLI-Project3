@@ -122,6 +122,14 @@ def delete_room():
     else:
         print(f'Room {number} not found.')
 
+def list_bookings():
+    """Function to list all bookings."""
+    bookings = session.query(Booking).all()
+    for bookings in bookings:
+        print(bookings.check_in_date)
+
+
+
 
 
 

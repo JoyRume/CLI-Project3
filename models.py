@@ -47,6 +47,10 @@ class Service(Base):
 
     rooms_associated = relationship("Room", secondary="room_service_association", backref="services_assigned", overlaps="rooms_assigned,services")
 
+    @classmethod
+    def get_all(cls, session):
+        return session.query(cls).all()
+
 
 class Booking(Base):
     __tablename__ = 'bookings'
