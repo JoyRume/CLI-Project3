@@ -125,8 +125,54 @@ def delete_room():
 def list_bookings():
     """Function to list all bookings."""
     bookings = session.query(Booking).all()
-    for bookings in bookings:
-        print(bookings.check_in_date)
+    for booking in bookings:
+        print(f"Booking ID: {booking.id}, Check-in Date: {booking.check_in_date}, Check-out Date: {booking.check_out_date}")
+
+def find_booking_by_id():
+    booking_id = int(input("Enter the booking ID: "))
+    booking = session.query(Booking).get(booking_id)
+    if booking:
+        print(f"Booking ID: {booking.id}, Check-in Date: {booking.check_in_date}, Check-out Date: {booking.check_out_date}")
+    else:
+        print("Booking not found.")
+
+def create_booking():
+    check_in_date = input("Enter the check-in date (YYYY-MM-DD): ")
+    check_out_date = input("Enter the check-out date (YYYY-MM-DD): ")
+    room_id = input("Enter the room ID: ")
+
+    new_booking = Booking(check_in_date=check_in_date, check_out_date=check_out_date, room_id=room_id)
+    session.add(new_booking)
+    session.commit()
+    print("Booking created successfully.")
+
+def update_booking():
+    booking_id = input("Enter the booking ID to update: ")
+    booking = session.query(Booking).get(booking_id)
+    if booking:
+        check_in_date = input("Enter the new check-in date (YYYY-MM-DD): ")
+        check_out_date = input("Enter the new check-out date (YYYY-MM-DD): ")
+        room_id = input("Enter the new room ID: ")
+
+        booking.check_in_date = check_in_date
+        booking.check_out_date = check_out_date
+        booking.room_id = room_id
+
+        session.commit()
+        print("Booking updated successfully.")
+    else:
+        print("Booking not found.")
+
+def delete_booking():
+    booking_id = input("Enter the booking ID to delete: ")
+    booking = session.query(Booking).get(booking_id)
+    if booking:
+        session.delete(booking)
+        session.commit()
+        print("Booking deleted successfully.")
+    else:
+        print("Booking not found.")
+
 
 
 
