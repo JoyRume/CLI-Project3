@@ -178,6 +178,16 @@ def list_services():
     for service in services:
         print(service.name)
 
+def find_service_by_id():
+    service_id = input("Enter the service ID: ")
+    service = session.query(Service).filter(Service.id == service_id).first()
+    if service:
+        print(f"Service ID: {service.id}")
+        print(f"Service Name: {service.name}")
+    else:
+        print("Service not found.")
+
+
 def create_service():
     name = input("Enter the service name: ")
 
@@ -207,14 +217,6 @@ def delete_service():
     else:
         print("Service not found.")
 
-
-
-
-
-
-
-
-# Implement other hotel-related functions similarly
 def main_menu():
     while True:
         print("\n=== Hotel Management System ===")
@@ -228,8 +230,18 @@ def main_menu():
         print("8. Create Room")
         print("9. Update Room")
         print("10. Delete Room")
-        print("11. Exit")
-        
+        print("11. List Bookings")
+        print("12. Find Booking by ID")
+        print("13. Create Booking")
+        print("14. Update Booking")
+        print("15. Delete Booking")
+        print("16. List Services")
+        print("17. Find Service by ID")
+        print("18. Create Service")
+        print("19. Update Service")
+        print("20. Delete Service")
+        print("21. Exit")
+
         choice = input("Enter your choice: ")
 
         if choice == "1":
@@ -253,12 +265,29 @@ def main_menu():
         elif choice == "10":
             delete_room()
         elif choice == "11":
+            list_bookings()
+        elif choice == "12":
+            find_booking_by_id()
+        elif choice == "13":
+            create_booking()
+        elif choice == "14":
+            update_booking()
+        elif choice == "15":
+            delete_booking()
+        elif choice == "16":
+            list_services()
+        elif choice == "17":
+            find_service_by_id()
+        elif choice == "18":
+            create_service()
+        elif choice == "19":
+            update_service()
+        elif choice == "20":
+            delete_service()
+        elif choice == "21":
             exit_program()
         else:
             print("Invalid choice. Please try again.")
-
-
-
 
 if __name__ == "__main__":
     main_menu()
