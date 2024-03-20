@@ -57,6 +57,9 @@ class Booking(Base):
     room_id = Column(Integer, ForeignKey('rooms.id'))
 
     room = relationship("Room", back_populates="bookings")
+    @classmethod
+    def get_all(cls, session):
+        return session.query(cls).all()
 
 if __name__ == '__main__':
     SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
