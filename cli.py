@@ -1,17 +1,15 @@
 from models import Hotel, Room, Service, Booking
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from datetime import datetime
 import sys
 
 # Create SQLite engine
 SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
 engine = create_engine(SQLALCHEMY_DATABASE_URI)
 
-# Bind the engine to a sessionmaker
+
 Session = sessionmaker(bind=engine)
 
-# Create a session object
 session = Session()
 
 def exit_program():
