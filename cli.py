@@ -1,6 +1,7 @@
 from models import Hotel, Room, Service, Booking
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+from datetime import datetime
 import sys
 
 # Create SQLite engine
@@ -136,11 +137,16 @@ def find_booking_by_id():
     else:
         print("Booking not found.")
 
+
+# Convert the check-in date string to a date object
+check_in_date_str = '2023-01-03'
+check_in_date = datetime.strptime(check_in_date_str, '%Y-%m-%d').date()
+
+
+
 def create_booking():
-    check_in_date = input("Enter the check-in date (YYYY-MM-DD): ")
     check_out_date = input("Enter the check-out date (YYYY-MM-DD): ")
     room_id = input("Enter the room ID: ")
-
     new_booking = Booking(check_in_date=check_in_date, check_out_date=check_out_date, room_id=room_id)
     session.add(new_booking)
     session.commit()
@@ -150,10 +156,10 @@ def update_booking():
     booking_id = input("Enter the booking ID to update: ")
     booking = session.query(Booking).get(booking_id)
     if booking:
-        check_in_date = input("Enter the new check-in date (YYYY-MM-DD): ")
         check_out_date = input("Enter the new check-out date (YYYY-MM-DD): ")
         room_id = input("Enter the new room ID: ")
 
+        # Update the Booking instance with the converted check_in_date
         booking.check_in_date = check_in_date
         booking.check_out_date = check_out_date
         booking.room_id = room_id
@@ -162,6 +168,8 @@ def update_booking():
         print("Booking updated successfully.")
     else:
         print("Booking not found.")
+
+
 
 def delete_booking():
     booking_id = input("Enter the booking ID to delete: ")
