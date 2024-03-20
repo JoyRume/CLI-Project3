@@ -137,40 +137,6 @@ def find_booking_by_id():
     else:
         print("Booking not found.")
 
-
-# Convert the check-in date string to a date object
-check_in_date_str = '2023-01-03'
-check_in_date = datetime.strptime(check_in_date_str, '%Y-%m-%d').date()
-
-
-
-def create_booking():
-    check_out_date = input("Enter the check-out date (YYYY-MM-DD): ")
-    room_id = input("Enter the room ID: ")
-    new_booking = Booking(check_in_date=check_in_date, check_out_date=check_out_date, room_id=room_id)
-    session.add(new_booking)
-    session.commit()
-    print("Booking created successfully.")
-
-def update_booking():
-    booking_id = input("Enter the booking ID to update: ")
-    booking = session.query(Booking).get(booking_id)
-    if booking:
-        check_out_date = input("Enter the new check-out date (YYYY-MM-DD): ")
-        room_id = input("Enter the new room ID: ")
-
-        # Update the Booking instance with the converted check_in_date
-        booking.check_in_date = check_in_date
-        booking.check_out_date = check_out_date
-        booking.room_id = room_id
-
-        session.commit()
-        print("Booking updated successfully.")
-    else:
-        print("Booking not found.")
-
-
-
 def delete_booking():
     booking_id = input("Enter the booking ID to delete: ")
     booking = session.query(Booking).get(booking_id)
@@ -240,15 +206,13 @@ def main_menu():
         print("10. Delete Room")
         print("11. List Bookings")
         print("12. Find Booking by ID")
-        print("13. Create Booking")
-        print("14. Update Booking")
-        print("15. Delete Booking")
-        print("16. List Services")
-        print("17. Find Service by ID")
-        print("18. Create Service")
-        print("19. Update Service")
-        print("20. Delete Service")
-        print("21. Exit")
+        print("13. Delete Booking")
+        print("14. List Services")
+        print("15. Find Service by ID")
+        print("16. Create Service")
+        print("17. Update Service")
+        print("18. Delete Service")
+        print("19. Exit")
 
         choice = input("Enter your choice: ")
 
@@ -277,25 +241,22 @@ def main_menu():
         elif choice == "12":
             find_booking_by_id()
         elif choice == "13":
-            create_booking()
-        elif choice == "14":
-            update_booking()
-        elif choice == "15":
             delete_booking()
-        elif choice == "16":
+        elif choice == "14":
             list_services()
-        elif choice == "17":
+        elif choice == "15":
             find_service_by_id()
-        elif choice == "18":
+        elif choice == "16":
             create_service()
-        elif choice == "19":
+        elif choice == "17":
             update_service()
-        elif choice == "20":
+        elif choice == "18":
             delete_service()
-        elif choice == "21":
+        elif choice == "19":
             exit_program()
         else:
             print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main_menu()
+
