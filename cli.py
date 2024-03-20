@@ -173,6 +173,41 @@ def delete_booking():
     else:
         print("Booking not found.")
 
+def list_services():
+    services = session.query(Service).all()
+    for service in services:
+        print(service.name)
+
+def create_service():
+    name = input("Enter the service name: ")
+
+    new_service = Service(name=name)
+    session.add(new_service)
+    session.commit()
+    print("Service created successfully.")
+
+def update_service():
+    service_id = input("Enter the service ID to update: ")
+    service = session.query(Service).get(service_id)
+    if service:
+        new_name = input("Enter the new service name: ")
+        service.name = new_name
+        session.commit()
+        print("Service updated successfully.")
+    else:
+        print("Service not found.")
+
+def delete_service():
+    service_id = input("Enter the service ID to delete: ")
+    service = session.query(Service).get(service_id)
+    if service:
+        session.delete(service)
+        session.commit()
+        print("Service deleted successfully.")
+    else:
+        print("Service not found.")
+
+
 
 
 
