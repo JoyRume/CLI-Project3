@@ -17,7 +17,6 @@ def exit_program():
     sys.exit()
 
 def list_hotels():
-    """Function to list all hotels."""
     hotels = session.query(Hotel).all()
     for hotel in hotels:
         print(hotel.name)  

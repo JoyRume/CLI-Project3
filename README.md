@@ -16,6 +16,9 @@ and the CLI functionality
 
 #  Alembic
 it was intalled and used in the initialization of migrations
+
+# Right click the database and open with SQLite Viewer to see the data in the database
+
 #  The CLI functionality
 the CLI functionality is in the cli.py whereby the CRUD functionality of all the models have been applied
 

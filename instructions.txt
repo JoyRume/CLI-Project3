@@ -26,6 +26,12 @@ Adding Data to the Database:(Seeding)
 Install faker
 configure SQLALchemy in the seed.py file
 After adding the fake data run python3 seed.py so that the data can be added to the database.
+cli.py file
+Configure SQLALchemy 
+Added CRUD functionality to the helpers.py
+Added CLI commands in the cli.py
+
+
 
 
 
