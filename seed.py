@@ -19,7 +19,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 def seed_data():
-    print("Seeding Data")
+    print("Data Seeded Successfully")
 
     # Create Hotels
     for _ in range(5):
