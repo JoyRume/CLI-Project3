@@ -4,7 +4,6 @@ from sqlalchemy.orm import sessionmaker
 from models import Base, Hotel, Room, Service, Booking
 import random
 from datetime import timedelta
-
 # Initialize Faker generator
 fake = Faker()
 

@@ -26,5 +26,3 @@ the CLI functionality is in the cli.py whereby the CRUD functionality of all the
 - **Booking Management**: Create, delete, and view bookings for rooms, including check-in and check-out dates.
 - **Service Management**: Create, update, delete, and view additional services offered by hotels, such as room service, laundry, or transportation.
 
-## Installation
-1. **Clone the Repository**: Clone or download the repository to your local machine.

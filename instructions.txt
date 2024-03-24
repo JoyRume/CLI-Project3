@@ -1,0 +1,38 @@
+Run pipenv install to install the dependencies and pipenv shell to enter your virtual environment to create the Pipfile & Pipfile.lock.
+Create New Files - models.py and seed.py
+Run pipenv install SQLALchemy 
+Create OOP Classes
+Map classes to tables where the table contains entities with primary key attributes in each entity
+Add relationships in the models.py
+Configure SQLALchemy:
+    1. Create a declarative_base object Base = declarative_base()
+    2. Create an Engine create_engine('driver:///name of database')
+    3. Track the Base Metadata in our database by using the create_all method
+Configure Class to SQLALchemy: 
+    1. Class Inherit from the declarative_base object
+    2. Class attribute called __tablename__ 
+    3. Class attributes for our table columns/class properties
+    4. One Column that is a Primary key
+    Install Alembic
+COnfigure Alembic => alembic init migrations
+                  => alembic.ini // set up our sqlalchemy_url, 
+                  => migrations/env.py // setup our target metadata  
+
+Generate migrations
+Apply Migrations => upgrade database 
+Run alembic revision --autogenerate -m "create models"
+Run alembic upgrade head
+Adding Data to the Database:(Seeding)
+Install faker
+configure SQLALchemy in the seed.py file
+
+
+
+
+
+
+
+
+
+
+
