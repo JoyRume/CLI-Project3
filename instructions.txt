@@ -13,6 +13,10 @@ Configure Class to SQLALchemy:
     2. Class attribute called __tablename__ 
     3. Class attributes for our table columns/class properties
     4. One Column that is a Primary key
+Create Session:
+import sessionmaker
+create an instance of sessionmaker and bind our engine/database
+instantiate new instance
     Install Alembic
 COnfigure Alembic => alembic init migrations
                   => alembic.ini // set up our sqlalchemy_url, 
